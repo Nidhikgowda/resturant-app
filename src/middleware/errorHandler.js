@@ -1,9 +1,9 @@
-const errorHandler = (err, req, res, next) => {
-  console.error("Error: ", err.message);
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || "Oops! Something went wrong!",
-  });
+const handler404 = (req, res, next) => {
+  const error = new Error(
+    "The page/resource you are looking for does not exist!"
+  );
+  error.status = 404;
+  next(error);
 };
 
-export default errorHandler;
+export default handler404;

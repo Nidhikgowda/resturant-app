@@ -1,11 +1,12 @@
 import express from "express";
-import logger from "./middlewares/logger.js";
-import errorHandler from "./middlewares/errorHandler.js";
-import handler404 from "./middlewares/404handler.js";
+import logger from "./middleware/logger.js";
+import errorHandler from "./middleware/errorHandler.js";
+import handler404 from "./middleware/404handler.js";
+import authRouter from "./routes/authRoutes.js";
 import menuRouter from "./routes/menuRoutes.js";
 import orderRouter from "./routes/orderRoutes.js";
-import customerRouter from "./routes/customerRoutes.js";
-import authRouter from "./routes/authRoutes.js";
+import customerRouter from "./routes/customerRoutes.js"
+
 const app = express();
 
 app.use(express.json());

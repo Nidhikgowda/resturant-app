@@ -7,6 +7,7 @@ import {
   updateOrderStatus,
   updateOrder,
 } from "../controllers/orderController.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -31,7 +32,7 @@ router.put(
         "Order Cancelled",
       ])
       .withMessage("Invalid status!"),
-  ],
+  ],auth,
   updateOrderStatus
 );
 router.put(

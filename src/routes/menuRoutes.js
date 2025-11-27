@@ -1,18 +1,18 @@
 import express from "express";
 import { body } from "express-validator";
-import auth from "../middleware/auth.js";
 import {
   addMenuItem,
   updateMenuItem,
   deleteMenuItem,
   getMenu,
 } from "../controllers/menuController.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
 router.get("/", getMenu);
 
-router.delete("/:id", auth,deleteMenuItem);
+router.delete("/:id", auth, deleteMenuItem);
 
 router.post(
   "/add",
@@ -22,8 +22,7 @@ router.post(
     body("price")
       .isFloat({ gt: 0 })
       .withMessage("Price needs to be greater than 0!"),
-  ],
-  auth,
+  ],auth,
   addMenuItem
 );
 
@@ -32,8 +31,7 @@ router.put(
   [
     body("name").optional().notEmpty(),
     body("price").optional().isFloat({ gt: 0 }),
-  ],
-  auth,
+  ],auth,
   updateMenuItem
 );
 
